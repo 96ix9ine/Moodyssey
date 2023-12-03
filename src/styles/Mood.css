@@ -5,9 +5,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-wrap: wrap;
+    text-align: center;
     color: #543A29;
-    margin-top: 45%;
+    margin-top: 15%;
     font-size: 24px;
     font-weight: 600;
 }
@@ -15,9 +15,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-wrap: wrap;
+    text-align: center;
     color: #543A29;
-    margin-top: 35%;
+    margin-top: 15%;
     font-size: 24px;
     font-weight: 600;
 }

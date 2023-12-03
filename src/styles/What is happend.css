@@ -1,0 +1,146 @@
+.what-is-happend {
+    background-color: #A694F5 !important;
+}
+.WIS-title {
+    display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	color: #543A29;
+	margin-top: 15%;
+	font-size: 24px;
+	font-weight: 600;
+    color: white !important;
+}
+.WIS-title-screen2 {
+    display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	color: #543A29;
+	font-size: 24px;
+	font-weight: 700;
+}
+.WIS-subtitle-screen2 {
+    display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	color: #543A29;
+	font-size: 18px;
+	font-weight: 500;
+}
+.WIS-title2-screen2 {
+    display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	color: white;
+	font-size: 16px;
+	font-weight: 400;
+}
+.WIS-div-container {
+    background-color: #F7F4F2;
+}
+.WIS-button-choice-1 {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: transparent;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+.WIS-button-choice {
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+.WIS-button-choice:focus {
+    background-color: #979390;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+    box-shadow: 2px 2px 0px 0px #979390;
+}
+.WIS-div-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    background-color: transparent;
+}
+.WIS-button-save {
+    width: 60vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #4bb34b;
+    border-radius: 20px;
+}
+.WIS-button-change {
+    width: 60vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: darkorange;
+    border-radius: 20px;
+}
+.WIS-div-grid {
+    display: grid;
+    grid-template-areas: 
+    'btn1 btn2 btn3 btn4'
+    'btn5 btn6 btn7 btn8'
+    'btn9 btn10 btn11 btn12';
+}
+.WIS-div-grid2 {
+    width: 85vw;
+    display: grid;
+    grid-template-areas: 
+    'btn1-grid2'
+    'btn2-grid2'
+    'btn3-grid2'
+    'btn4-grid2'
+    'btn5-grid2'
+    'btn6-grid2'
+    'btn7-grid2';
+}
+.WIS-div-grid2-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.WIS-div-grid2-container-for-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+.WIS-div-grid2-button {
+    width: 100%;
+    margin: 10px 10px;
+    box-shadow: 0px 0px 0px 2px #97918c;
+    border-radius: 20px;
+}
+.WIS-div-grid2-button:focus {
+    box-shadow: 0px 0px 0px 2px orange;
+}
+.WIS-iconbutton {
+    margin: 15px;
+    color: #543A29;
+    background-color: #D3CCC7;
+}
+.WIS-iconbutton:focus {
+    box-shadow: 0px 0px 0px 2px orange;
+}
+.WIS-input {
+    width: 75vw;
+    height: 100px;
+    background-color: #91A75F;
+}
+.WIS-buttons-container {
+    width: 75vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+}

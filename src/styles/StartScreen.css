@@ -1,11 +1,5 @@
 .div-screen {
-    width: auto;
-    height: auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    background-color: #543A29;
+    background-color: #543A29 !important;
 }
 .Logo-button {
     position: relative;
@@ -17,6 +11,5 @@
     background-image: url('../img/Logo.svg');
     background-repeat: no-repeat;
     background-size: cover;
-    margin-top: 70%;
     margin-bottom: 20px;
 }
