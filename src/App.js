@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import bridge from '@vkontakte/vk-bridge';
-import { View, Panel, PanelHeader, AdaptivityProvider, AppRoot, ConfigProvider, SplitLayout, SplitCol, Group, Button, Separator, Spacing, Title, IconButton, Subhead, Image, Epic, Tabbar, TabbarItem, FormLayout, FormItem, Input, FormField } from '@vkontakte/vkui';
+import { View, Panel, PanelHeader, Header, SimpleCell, AdaptivityProvider, AppRoot, ConfigProvider, SplitLayout, SplitCol, Group, Button, Spacing, Title, IconButton, Subhead, Tabbar, TabbarItem, FormItem, FormField, PanelHeaderBack, Avatar, Cell, Switch, Placeholder } from '@vkontakte/vkui';
 import '@vkontakte/vkui/dist/vkui.css';
 import '@vkontakte/icons'
 import './styles/Mood.css';
 import './styles/StartScreen.css';
 import './styles/What is happend.css'
+import './styles/Settings.css';
+import './styles/Advice.css';
 
 import {Icon24Add} from '@vkontakte/icons';
 import {Icon28SettingsOutline} from '@vkontakte/icons'
@@ -29,13 +31,15 @@ import {Icon28Users3Outline} from '@vkontakte/icons'
 import {Icon28PaletteOutline} from '@vkontakte/icons'
 import {Icon20Check} from '@vkontakte/icons'
 
+import {Icon24DoorArrowLeftOutline} from '@vkontakte/icons'
+import {Icon24MessageArrowRightOutline} from '@vkontakte/icons'
+
 const App = () => {
 	const [activePanel, setActivePanel] = useState('start-screen');
 	const [fetchedUser, setUser] = useState(null);
 	// const [popout, setPopout] = useState(<ScreenSpinner size='large' />);
 
 	const [simple, setSimple] = useState('one');
-	const [text, setText] = useState('one');
 
 	const [input, setInput] = useState('');
 
@@ -62,7 +66,7 @@ const App = () => {
 		async function fetchData() {
 			const user = await bridge.send('VKWebAppGetUserInfo');
 			setUser(user);
-			setPopout(null);
+			// setPopout(null);
 		}
 		fetchData();
 	}, []);
@@ -81,6 +85,15 @@ const App = () => {
 		backgroundColor: '#F7F4F2'
 	  };
 
+	const containerStyles2 = {
+		width: '100vw', 
+		height: '98vh', 
+		display: 'flex', 
+		alignItems: 'center', 
+		justifyContent: 'center', 
+		flexDirection: 'column', 
+		backgroundColor: '#19191a'
+	}
 
 	return (
 		<ConfigProvider>
@@ -119,6 +132,7 @@ const App = () => {
 								<Panel id='start-2'>
 									<Group separator='hide'>
 										<div style={containerStyles}>
+											<PanelHeader separator={false} style={{width: '100vw'}} before={<PanelHeaderBack onClick={() => setActivePanel('start-1')}/>}></PanelHeader>
 											<Title className='question-2'>Когда тебе удобнее записывать настроение?</Title>
 											<Spacing size={40}></Spacing>
 											<Button className='button-general' size="l" appearance="accent">18:00</Button>
@@ -132,63 +146,48 @@ const App = () => {
 											<Button className='button-general' size="l" appearance="accent">Выбрать потом</Button>
 											<Spacing size={40}></Spacing>
 											<Button className='button-next' size='s' appearance='positive'
-											onClick={() => setActivePanel("what is happend-1")}>Далее</Button>
+											onClick={() => setActivePanel("start-3")}>Далее</Button>
 										</div>
 									</Group>
 								</Panel>
 								<Panel id='start-3'>
 									<Group separator='hide'>
 										<div style={containerStyles}>
+											<PanelHeader separator={false} style={{width: '100vw'}} before={<PanelHeaderBack onClick={() => setActivePanel('start-2')}/>}></PanelHeader>
 											<Title className='question'>Твое настроение</Title>
 											<Spacing size={40}></Spacing>
 											<Group separator='hide'>
 												<div className='mood'></div>
 											</Group>
 											<Spacing size={100}></Spacing>
-											<Epic>
-												<Tabbar>
-													<TabbarItem>
-														<IconButton
-														onClick={() => setActivePanel("#")}>
-															<Icon28ListAddOutline/>
-														</IconButton>
-													</TabbarItem>
+											<Tabbar>
+												<TabbarItem onClick={() => setActivePanel("start-screen")}>
+														<Icon28ListAddOutline/>
+												</TabbarItem>
 
-													<TabbarItem>
-														<IconButton
-														onClick={() => setActivePanel("#")}>
-															<Icon28GraphOutline/>
-														</IconButton>
-													</TabbarItem>
+												<TabbarItem onClick={() => setActivePanel("start-screen")}>
+														<Icon28GraphOutline/>
+												</TabbarItem>
 
-													<TabbarItem>
-														<IconButton className='mood-plus-button'
-														onClick={() => setActivePanel("what is happend-1")}>
-															<Icon24Add/>
-														</IconButton>
-													</TabbarItem>
+												<TabbarItem onClick={() => setActivePanel("what is happend-1")}>
+														<Icon24Add fill='white' className='mood-plus-button'/>
+												</TabbarItem>
 													
-													<TabbarItem>
-														<IconButton
-														onClick={() => setActivePanel("#")}>
-															<Icon28LightbulbStarOutline/>
-														</IconButton>
-													</TabbarItem>
+												<TabbarItem onClick={() => setActivePanel("facts and articles")}> 
+														<Icon28LightbulbStarOutline/>
+												</TabbarItem>
 													
-													<TabbarItem>
-														<IconButton
-														onClick={() => setActivePanel("#")}>
-															<Icon28SettingsOutline/>
-														</IconButton>
-													</TabbarItem>
-												</Tabbar>
-											</Epic>
+												<TabbarItem onClick={() => setActivePanel("settings")}>
+														<Icon28SettingsOutline/>
+												</TabbarItem>
+											</Tabbar>
 										</div>
 									</Group>
 								</Panel>
 								<Panel id='what is happend-1'>
 									<Group separator='hide'>
 										<div style={containerStyles} className='what-is-happend'>
+											<PanelHeader separator={false} style={{width: '100vw'}} before={<PanelHeaderBack onClick={() => setActivePanel('start-3')}/>}></PanelHeader>
 											<Icon36IncognitoOutline width={120} height={120}/>
 											<Title className='WIS-title'>Как ты?</Title>
 											<Spacing size={40}></Spacing>
@@ -210,6 +209,7 @@ const App = () => {
 								</Panel>
 								<Panel id='what is happend-2'>
 									<div style={containerStyles}>
+									<PanelHeader separator={false} style={{width: '100vw'}} before={<PanelHeaderBack onClick={() => setActivePanel('what is happend-1')}/>}></PanelHeader>
 									<Icon36IncognitoOutline width={120} height={120} fill='black'/>
 									<Spacing size={20}></Spacing>
 									<Title className='WIS-title-screen2'>Плохо</Title>
@@ -285,6 +285,7 @@ const App = () => {
 								</Panel>
 								<Panel id='what is happend-3'>
 									<div style={containerStyles}>
+										<PanelHeader separator={false} style={{width: '100vw'}} before={<PanelHeaderBack onClick={() => setActivePanel('what is happend-2')}/>}></PanelHeader>
 										<Icon36IncognitoOutline width={120} height={120} fill='black'/>
 										<Spacing size={20}></Spacing>
 										<Title className='WIS-title-screen2'>Плохо</Title>
@@ -326,11 +327,113 @@ const App = () => {
 												</div>
 											</div>
 										</div>
-										<IconButton style={{marginTop: '40px'}} className='WIS-button-save' onClick={() => setActivePanel("what is happend-3")}>
+										<IconButton style={{marginTop: '40px'}} className='WIS-button-save' onClick={() => setActivePanel("settings")}>
 											<Icon20Check/>
 											<Title style={{marginLeft: '10px'}} className='WIS-title2-screen2'>Сохранить</Title>
 										</IconButton>
 									</div>
+								</Panel>
+								<Panel id='settings'>
+									<div style={containerStyles2}>
+									<PanelHeader separator={false} style={{width: '100vw'}} before={<PanelHeaderBack onClick={() => setActivePanel('what is happend-3')}/>}></PanelHeader>
+									<Spacing size={40}></Spacing>
+									<Title className='settings-title'>Настройки</Title>
+									<Spacing size={40}></Spacing>
+										<Group style={{width: '100vw', height: '100vh', backgroundColor: '#19191a'}}>
+											<Cell
+												before={fetchedUser?.photo_200 ? <Avatar src={fetchedUser?.photo_200}/> : null}
+												subtitle={fetchedUser?.city && fetchedUser?.city.title ? fetchedUser?.city.title : ''}
+											>
+												{`${fetchedUser?.first_name} ${fetchedUser?.last_name}`}
+											</Cell>
+											<Spacing size={20}></Spacing>
+											<Group mode='plain'>
+												<SimpleCell Component="label" after={<Switch defaultChecked/>}>
+													Уведомления
+												</SimpleCell>
+											</Group>
+											<Group mode='plain'>
+												<SimpleCell onClick={() => setActivePanel('policy')} after={<Icon24DoorArrowLeftOutline/>}>	
+													Политика конфиденциальности
+												</SimpleCell>
+											</Group>
+											<Group mode='plain'>
+												<SimpleCell onClick={() => setActivePanel('policy')} after={<Icon24MessageArrowRightOutline/>}>	
+													Поделиться приложением
+												</SimpleCell>
+											</Group>
+											<Tabbar>
+												<TabbarItem onClick={() => setActivePanel("start-screen")}>
+														<Icon28ListAddOutline/>
+												</TabbarItem>
+
+												<TabbarItem onClick={() => setActivePanel("start-screen")}>
+														<Icon28GraphOutline/>
+												</TabbarItem>
+
+												<TabbarItem onClick={() => setActivePanel("what is happend-1")}>
+														<Icon24Add fill='white' className='mood-plus-button'/>
+												</TabbarItem>
+													
+												<TabbarItem onClick={() => setActivePanel("facts and articles")}>
+														<Icon28LightbulbStarOutline/>
+												</TabbarItem>
+													
+												<TabbarItem onClick={() => setActivePanel("settings")}>
+														<Icon28SettingsOutline/>
+												</TabbarItem>
+											</Tabbar>
+										</Group>
+									</div>
+								</Panel>
+								<Panel id='policy'>
+									<PanelHeader before={<PanelHeaderBack onClick={() => setActivePanel('settings')}/>}>Ничего</PanelHeader>
+									<Placeholder>Тут ничего нет</Placeholder>
+								</Panel>
+								<Panel id='facts and articles'>
+									<div style={containerStyles2}>
+										<PanelHeader separator={false} style={{width: '100vw'}} before={<PanelHeaderBack onClick={() => setActivePanel('settings')}/>}></PanelHeader>
+											<Group style={containerStyles2}>
+												<Title className='advice-title'>Факты</Title>
+												<Spacing size={40}></Spacing>
+												<Button className='advice-button' onClick={() => setActivePanel("facts")}></Button>
+												<Spacing size={40}></Spacing>
+												<Title className='advice-title'>Статьи</Title>
+												<Spacing size={40}></Spacing>
+												<Button className='advice-button' onClick={() => setActivePanel("articles")}></Button>
+												<Spacing size={20}></Spacing>
+												<Button className='advice-button' onClick={() => setActivePanel("articles")}></Button>
+											<Tabbar>
+												<TabbarItem onClick={() => setActivePanel("start-screen")}>
+														<Icon28ListAddOutline/>
+												</TabbarItem>
+
+												<TabbarItem onClick={() => setActivePanel("start-screen")}>
+														<Icon28GraphOutline/>
+												</TabbarItem>
+
+												<TabbarItem onClick={() => setActivePanel("what is happend-1")}>
+														<Icon24Add fill='white' className='mood-plus-button'/>
+												</TabbarItem>
+													
+												<TabbarItem onClick={() => setActivePanel("facts and articles")}>
+														<Icon28LightbulbStarOutline/>
+												</TabbarItem>
+													
+												<TabbarItem onClick={() => setActivePanel("settings")}>
+														<Icon28SettingsOutline/>
+												</TabbarItem>
+											</Tabbar>
+											</Group>
+									</div>
+								</Panel>
+								<Panel id='facts'>
+									<PanelHeader before={<PanelHeaderBack onClick={() => setActivePanel('facts and articles')}/>}>Ничего</PanelHeader>
+									<Placeholder>Тут ничего нет</Placeholder>
+								</Panel>
+								<Panel id='articles'>
+									<PanelHeader before={<PanelHeaderBack onClick={() => setActivePanel('facts and articles')}/>}>Ничего</PanelHeader>
+									<Placeholder>Тут ничего нет</Placeholder>
 								</Panel>
 							</View>
 						</SplitCol>

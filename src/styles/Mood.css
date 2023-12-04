@@ -59,6 +59,7 @@
 } */
 
 .mood-plus-button {
-    color: white;
     background-color: #59B959;
+    border-radius: 30px;
+    padding: 10px;
 }

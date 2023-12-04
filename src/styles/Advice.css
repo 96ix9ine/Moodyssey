@@ -1,0 +1,17 @@
+.advice-title {
+    display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	color: #F7F4F2;
+	font-size: 24px;
+	font-weight: 700;
+}
+.advice-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(10deg, rgba(1,22,39,1) 0%, rgba(255,255,255,1) 30%, rgba(203,255,252,1) 50%, rgba(255,255,255,1) 70%, rgba(1,22,39,1) 100%);
+    width: 75vw;
+    height: 15vh;
+}
