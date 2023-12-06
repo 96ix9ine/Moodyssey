@@ -120,18 +120,40 @@
     margin: 10px 10px;
     box-shadow: 0px 0px 0px 2px #97918c;
     border-radius: 20px;
+    transition: all 0.3s ease;
 }
 .WIS-div-grid2-button:focus {
     box-shadow: 0px 0px 0px 2px orange;
+    transition: all 0.3s ease;
 }
 .WIS-iconbutton {
     margin: 15px;
     color: #543A29;
     background-color: #D3CCC7;
+    transition: all 0.3s ease;
 }
 .WIS-iconbutton:focus {
     box-shadow: 0px 0px 0px 2px orange;
+    transition: all 0.3s ease;
 }
+/* .WIS-iconbutton-checkbox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+.checkbox-boxshadow {
+    box-shadow: 0px 0px 0px 2px orange;
+}
+.WIS-iconbutton-checkbox input {
+    opacity: 0;
+    display: none !important;
+}
+.vkuiCheckbox__icon--on,
+.vkuiCheckbox__icon--off {
+    opacity: 0;
+    display: none !important;
+} */
 .WIS-input {
     width: 75vw;
     height: 100px;

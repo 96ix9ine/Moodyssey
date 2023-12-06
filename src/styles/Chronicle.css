@@ -1,0 +1,84 @@
+.chronicle-title {
+    display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	color: #543A29;
+	font-size: 24px;
+	font-weight: 700;
+}
+.chronicle-div-title {
+    display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	color: #543A29;
+	font-size: 20px;
+	font-weight: 700;
+}
+.chronicle-div-date {
+    text-align: center;
+	color: #4F3422;
+	font-size: 24px;
+	font-weight: 700;
+}
+.chronicle-div-subtitle {
+    display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+    text-align: center;
+	color: #543A29;
+	font-size: 14px;
+	font-weight: 500;
+}
+.chronicle-bigdiv-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.chronicle-div-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 85vw;
+}
+.chronicle-div-entry {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 75vw;
+    height: 15vh;
+    margin: 20px;
+    border: 2px solid #97918c;
+    border-radius: 30px;
+}
+.chronicle-div-emoji {
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+.emoji-1 {
+    background-image: url('../img/smile-happy.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 50px;
+    height: 50px;
+}
+.emoji-2 {
+    background-image: url('../img/smile-sad.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 50px;
+    height: 50px;
+}
+.emoji-3 {
+    background-image: url('../img/smile-rr.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 50px;
+    height: 50px;
+}

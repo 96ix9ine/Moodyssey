@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import bridge from '@vkontakte/vk-bridge';
-import { View, Panel, PanelHeader, Header, SimpleCell, AdaptivityProvider, AppRoot, ConfigProvider, SplitLayout, SplitCol, Group, Button, Spacing, Title, IconButton, Subhead, Tabbar, TabbarItem, FormItem, FormField, PanelHeaderBack, Avatar, Cell, Switch, Placeholder } from '@vkontakte/vkui';
+import { View, Panel, PanelHeader, Header, SimpleCell, AdaptivityProvider, AppRoot, ConfigProvider, SplitLayout, SplitCol, Group, Button, Spacing, Title, IconButton, Subhead, Tabbar, TabbarItem, FormItem, FormField, PanelHeaderBack, Avatar, Cell, Switch, Placeholder, Checkbox, classNames, HorizontalScroll } from '@vkontakte/vkui';
 import '@vkontakte/vkui/dist/vkui.css';
-import '@vkontakte/icons'
+import '@vkontakte/icons';
 import './styles/Mood.css';
 import './styles/StartScreen.css';
-import './styles/What is happend.css'
+import './styles/What is happend.css';
 import './styles/Settings.css';
 import './styles/Advice.css';
+import './styles/Chronicle.css';
+import './styles/Statistics.css';
 
 import {Icon24Add} from '@vkontakte/icons';
 import {Icon28SettingsOutline} from '@vkontakte/icons'
@@ -95,6 +97,12 @@ const App = () => {
 		backgroundColor: '#19191a'
 	}
 
+	const CheckboxAdd = () => {
+		const checkboxAdd = document.getElementById('checkbox')
+		checkboxAdd.classList.add('checkbox-boxshadow')
+	}
+		
+
 	return (
 		<ConfigProvider>
 			<AdaptivityProvider>
@@ -146,7 +154,7 @@ const App = () => {
 											<Button className='button-general' size="l" appearance="accent">Выбрать потом</Button>
 											<Spacing size={40}></Spacing>
 											<Button className='button-next' size='s' appearance='positive'
-											onClick={() => setActivePanel("start-3")}>Далее</Button>
+											onClick={() => setActivePanel("what is happend-1")}>Далее</Button>
 										</div>
 									</Group>
 								</Panel>
@@ -161,11 +169,11 @@ const App = () => {
 											</Group>
 											<Spacing size={100}></Spacing>
 											<Tabbar>
-												<TabbarItem onClick={() => setActivePanel("start-screen")}>
+												<TabbarItem onClick={() => setActivePanel("chronicle")}>
 														<Icon28ListAddOutline/>
 												</TabbarItem>
 
-												<TabbarItem onClick={() => setActivePanel("start-screen")}>
+												<TabbarItem onClick={() => setActivePanel("statistics")}>
 														<Icon28GraphOutline/>
 												</TabbarItem>
 
@@ -187,9 +195,9 @@ const App = () => {
 								<Panel id='what is happend-1'>
 									<Group separator='hide'>
 										<div style={containerStyles} className='what-is-happend'>
-											<PanelHeader separator={false} style={{width: '100vw'}} before={<PanelHeaderBack onClick={() => setActivePanel('start-3')}/>}></PanelHeader>
+											<PanelHeader separator={false} style={{width: '100vw'}} before={<PanelHeaderBack onClick={() => setActivePanel('start-2')}/>}></PanelHeader>
 											<Icon36IncognitoOutline width={120} height={120}/>
-											<Title className='WIS-title'>Как ты?</Title>
+											<Title className='WIS-title'>Как ты себя чувствуешь?</Title>
 											<Spacing size={40}></Spacing>
 											<Tabbar style={{position: 'static', minWidth: "50%", maxWidth: '75%', borderRadius:'20px'}}>
 												<TabbarItem selected={simple === 'one'} onClick={() => setSimple('one')} text='Хорошо' className='WIS-button-choice'>
@@ -217,12 +225,12 @@ const App = () => {
 									<Subhead className='WIS-subtitle-screen2'>Расскажи что происходит</Subhead>
 									<Spacing size={30}></Spacing>
 									<div className='WIS-div-grid'>
-										<IconButton id='btn1' className='WIS-iconbutton'>
-											<Icon28BriefcaseOutline/>
+									<IconButton id='btn1' className='WIS-iconbutton'>
+												<Icon28BriefcaseOutline/>											
 										</IconButton>
-
+					
 										<IconButton id='btn2' className='WIS-iconbutton'>
-											<Icon28EducationOutline/>
+												<Icon28EducationOutline/>									
 										</IconButton>
 
 										<IconButton id='btn3' className='WIS-iconbutton'>
@@ -327,7 +335,7 @@ const App = () => {
 												</div>
 											</div>
 										</div>
-										<IconButton style={{marginTop: '40px'}} className='WIS-button-save' onClick={() => setActivePanel("settings")}>
+										<IconButton style={{marginTop: '40px'}} className='WIS-button-save' onClick={() => setActivePanel("chronicle")}>
 											<Icon20Check/>
 											<Title style={{marginLeft: '10px'}} className='WIS-title2-screen2'>Сохранить</Title>
 										</IconButton>
@@ -335,7 +343,7 @@ const App = () => {
 								</Panel>
 								<Panel id='settings'>
 									<div style={containerStyles2}>
-									<PanelHeader separator={false} style={{width: '100vw'}} before={<PanelHeaderBack onClick={() => setActivePanel('what is happend-3')}/>}></PanelHeader>
+									<PanelHeader separator={false} style={{width: '100vw'}} before={<PanelHeaderBack onClick={() => setActivePanel('chronicle')}/>}></PanelHeader>
 									<Spacing size={40}></Spacing>
 									<Title className='settings-title'>Настройки</Title>
 									<Spacing size={40}></Spacing>
@@ -363,11 +371,11 @@ const App = () => {
 												</SimpleCell>
 											</Group>
 											<Tabbar>
-												<TabbarItem onClick={() => setActivePanel("start-screen")}>
+												<TabbarItem onClick={() => setActivePanel("chronicle")}>
 														<Icon28ListAddOutline/>
 												</TabbarItem>
 
-												<TabbarItem onClick={() => setActivePanel("start-screen")}>
+												<TabbarItem onClick={() => setActivePanel("statistics")}>
 														<Icon28GraphOutline/>
 												</TabbarItem>
 
@@ -392,7 +400,7 @@ const App = () => {
 								</Panel>
 								<Panel id='facts and articles'>
 									<div style={containerStyles2}>
-										<PanelHeader separator={false} style={{width: '100vw'}} before={<PanelHeaderBack onClick={() => setActivePanel('settings')}/>}></PanelHeader>
+										<PanelHeader separator={false} style={{width: '100vw'}} before={<PanelHeaderBack onClick={() => setActivePanel('chronicle')}/>}></PanelHeader>
 											<Group style={containerStyles2}>
 												<Title className='advice-title'>Факты</Title>
 												<Spacing size={40}></Spacing>
@@ -404,11 +412,11 @@ const App = () => {
 												<Spacing size={20}></Spacing>
 												<Button className='advice-button' onClick={() => setActivePanel("articles")}></Button>
 											<Tabbar>
-												<TabbarItem onClick={() => setActivePanel("start-screen")}>
+												<TabbarItem onClick={() => setActivePanel("chronicle")}>
 														<Icon28ListAddOutline/>
 												</TabbarItem>
 
-												<TabbarItem onClick={() => setActivePanel("start-screen")}>
+												<TabbarItem onClick={() => setActivePanel("statistics")}>
 														<Icon28GraphOutline/>
 												</TabbarItem>
 
@@ -434,6 +442,130 @@ const App = () => {
 								<Panel id='articles'>
 									<PanelHeader before={<PanelHeaderBack onClick={() => setActivePanel('facts and articles')}/>}>Ничего</PanelHeader>
 									<Placeholder>Тут ничего нет</Placeholder>
+								</Panel>
+								<Panel id='chronicle'>
+									<Group separator='hide'>
+										<div style={containerStyles}>
+											<PanelHeader separator={false} style={{width: '100vw'}} before={<PanelHeaderBack onClick={() => setActivePanel('what is happend-3')}/>}></PanelHeader>
+											<Spacing size={15}></Spacing>
+											<Title className='chronicle-title'>Хроника</Title>
+											<Spacing size={40}></Spacing>
+											<Group separator='hide'>
+													<div className='chronicle-bigdiv-container'>
+														<Group>
+															<div className='chronicle-div-container'>
+																<div className='chronicle-div-date'>6 декабря</div>
+																<div className='chronicle-div-entry'>
+																	<div className='chronicle-div-emoji emoji-1'></div>
+																	<Title className='chronicle-div-title'>Хорошо</Title>
+																	<Subhead className='chronicle-div-subtitle'>Описание радостей и новых возможностей в жизни</Subhead>
+																</div>
+															</div>
+														</Group>
+														
+														<Group>
+															<div className='chronicle-div-container'>
+																<div className='chronicle-div-date'>1 декабря</div>
+																<div className='chronicle-div-entry'>
+																	<div className='chronicle-div-emoji emoji-2'></div>
+																	<Title className='chronicle-div-title'>Плохо</Title>
+																	<Subhead className='chronicle-div-subtitle'>Описание суровой действительности и тяжелой жизни</Subhead>
+																</div>
+															</div>
+														</Group>														
+														
+														<Group>
+															<div className='chronicle-div-container'>
+																<div className='chronicle-div-date'>27 ноября</div>
+																<div className='chronicle-div-entry'>
+																	<div className='chronicle-div-emoji emoji-3'></div>
+																	<Title className='chronicle-div-title'>Тяжело сказать</Title>
+																	<Subhead className='chronicle-div-subtitle'>Описание неясности всей произодшей ситуации</Subhead>
+																</div>
+															</div>
+														</Group>
+													</div>
+											</Group>
+											<Spacing size={100}></Spacing>
+											<Tabbar>
+												<TabbarItem onClick={() => setActivePanel("chronicle")}>
+														<Icon28ListAddOutline/>
+												</TabbarItem>
+
+												<TabbarItem onClick={() => setActivePanel("statistics")}>
+														<Icon28GraphOutline/>
+												</TabbarItem>
+
+												<TabbarItem onClick={() => setActivePanel("what is happend-1")}>
+														<Icon24Add fill='white' className='mood-plus-button'/>
+												</TabbarItem>
+													
+												<TabbarItem onClick={() => setActivePanel("facts and articles")}> 
+														<Icon28LightbulbStarOutline/>
+												</TabbarItem>
+													
+												<TabbarItem onClick={() => setActivePanel("settings")}>
+														<Icon28SettingsOutline/>
+												</TabbarItem>
+											</Tabbar>
+										</div>
+									</Group>
+								</Panel>
+								<Panel id='statistics'>
+									<Group separator='hide'>
+										<div style={containerStyles}>
+											<PanelHeader separator={false} style={{width: '100vw'}} before={<PanelHeaderBack onClick={() => setActivePanel('chronicle')}/>}></PanelHeader>
+											<Title className='statistics-title'>Статистика</Title>
+											<Spacing size={40}></Spacing>
+											<Tabbar style={{position: 'static', minWidth: "50%", maxWidth: '85%', borderRadius:'30px'}}>
+												<TabbarItem selected={simple === 'one'} onClick={() => setSimple('one')} text='Неделя' className='statistics-button-choice'></TabbarItem>
+												<TabbarItem selected={simple === 'two'} onClick={() => setSimple('two')} text='Месяц' className='statistics-button-choice'></TabbarItem>
+												<TabbarItem selected={simple === 'three'} onClick={() => setSimple('three')} text='Все время' className='statistics-button-choice'></TabbarItem>
+											</Tabbar>
+											<div className='statistics-divshow'></div>
+											<div className='statistics-div-legend'>
+												<div className='statistics-div-legend-circle green'></div>
+												<Title className='statistics-div-legend-title'>Хорошо</Title>
+											</div>
+											<div className='statistics-div-legend'>
+												<div className='statistics-div-legend-circle purple'></div>
+												<Title className='statistics-div-legend-title'>Плохо</Title>
+											</div>
+											<div className='statistics-div-legend'>
+												<div className='statistics-div-legend-circle yellow'></div>
+												<Title className='statistics-div-legend-title'>Сложно сказать</Title>
+											</div>
+											<div className='statistics-div-legend'>
+												<div className='statistics-div-legend-circle brown'></div>
+												<Title className='statistics-div-legend-title'>Подавлен</Title>
+											</div>
+											<div className='statistics-div-legend'>
+												<div className='statistics-div-legend-circle orange'></div>
+												<Title className='statistics-div-legend-title'>Несчастен</Title>
+											</div>
+											<Tabbar>
+												<TabbarItem onClick={() => setActivePanel("chronicle")}>
+														<Icon28ListAddOutline/>
+												</TabbarItem>
+
+												<TabbarItem onClick={() => setActivePanel("statistics")}>
+														<Icon28GraphOutline/>
+												</TabbarItem>
+
+												<TabbarItem onClick={() => setActivePanel("what is happend-1")}>
+														<Icon24Add fill='white' className='mood-plus-button'/>
+												</TabbarItem>
+													
+												<TabbarItem onClick={() => setActivePanel("facts and articles")}>
+														<Icon28LightbulbStarOutline/>
+												</TabbarItem>
+													
+												<TabbarItem onClick={() => setActivePanel("settings")}>
+														<Icon28SettingsOutline/>
+												</TabbarItem>
+											</Tabbar>
+										</div>
+									</Group>
 								</Panel>
 							</View>
 						</SplitCol>

@@ -1,0 +1,77 @@
+.statistics-title {
+    display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	color: #543A29;
+	font-size: 24px;
+	font-weight: 700;
+}
+.statistics-button-choice {
+    border-radius: 30px;
+    transition: all 0.3s ease;
+}
+.statistics-button-choice .vkuiTabbarItem__text {
+    font-size: 14px;
+    line-height: 24px;
+    margin: 0;
+}
+/* .vkuiTabbarItem--selected {
+    background-color: #685346;
+    border-radius: 30px;
+    transition: all 0.3s ease;
+    box-shadow: 0px 0px 1px 1px #685346;
+} */
+.vkuiTabbarItem--android:first-child,
+.vkuiTabbarItem--android:last-child {
+    border-bottom-left-radius: 30px;
+    border-top-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    border-top-right-radius: 30px;
+}
+.statistics-divshow {
+    width: 250px;
+    height: 250px;
+    background-image: url('../img/Statistics.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.statistics-div-legend {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 75vw;
+    height: 5vh;
+    border: 2px solid #97918c;
+    border-radius: 15px;
+    margin: 5px;
+}
+.statistics-div-legend-title {
+    margin-left: 20px;
+	color: #543A29;
+	font-size: 15px;
+	font-weight: 700;
+}
+.statistics-div-legend-circle {
+    width: 30px;
+    height: 30px;
+    background-color: black;
+    border-radius: 9999px;
+    margin-left: 20px;
+}
+.green {
+    background-color: #91A75F;
+}
+.purple {
+    background-color: #A694F5;
+}
+.yellow {
+    background-color: #FFCE5C;
+}
+.brown {
+    background-color: #685346;
+}
+.orange {
+    background-color: #FF9C46;
+}
