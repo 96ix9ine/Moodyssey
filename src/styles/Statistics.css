@@ -30,8 +30,8 @@
     border-top-right-radius: 30px;
 }
 .statistics-divshow {
-    width: 250px;
-    height: 250px;
+    width: 100vw;
+    height: 50vh;
     background-image: url('../img/Statistics.svg');
     background-repeat: no-repeat;
     background-size: cover;

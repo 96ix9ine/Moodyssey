@@ -41,7 +41,7 @@ const App = () => {
 	const [fetchedUser, setUser] = useState(null);
 	// const [popout, setPopout] = useState(<ScreenSpinner size='large' />);
 
-	const [simple, setSimple] = useState('one');
+	const [simple, setSimple] = useState('two');
 
 	const [input, setInput] = useState('');
 
@@ -97,10 +97,9 @@ const App = () => {
 		backgroundColor: '#19191a'
 	}
 
-	const CheckboxAdd = () => {
-		const checkboxAdd = document.getElementById('checkbox')
-		checkboxAdd.classList.add('checkbox-boxshadow')
-	}
+	const CheckboxAdd = (event) => {
+        event.target.classList.add('checkbox-boxshadow')
+    }
 		
 
 	return (
@@ -195,150 +194,230 @@ const App = () => {
 								<Panel id='what is happend-1'>
 									<Group separator='hide'>
 										<div style={containerStyles} className='what-is-happend'>
-											<PanelHeader separator={false} style={{width: '100vw'}} before={<PanelHeaderBack onClick={() => setActivePanel('start-2')}/>}></PanelHeader>
-											<Icon36IncognitoOutline width={120} height={120}/>
+											<PanelHeader separator={false} style={{width: '100vw'}} before={<PanelHeaderBack onClick={() => setActivePanel('chronicle')}/>}></PanelHeader>
+											<Spacing size={100}></Spacing>
+											<div className='WIS-animal-1'></div>
 											<Title className='WIS-title'>Как ты себя чувствуешь?</Title>
 											<Spacing size={40}></Spacing>
 											<Tabbar style={{position: 'static', minWidth: "50%", maxWidth: '75%', borderRadius:'20px'}}>
 												<TabbarItem selected={simple === 'one'} onClick={() => setSimple('one')} text='Хорошо' className='WIS-button-choice'>
-													😄
 												</TabbarItem>
 												<TabbarItem selected={simple === 'two'} onClick={() => setSimple('two')} text='Плохо' className='WIS-button-choice'>
-													😔
 												</TabbarItem>
 											</Tabbar>
 											<Spacing size={40}></Spacing>
-											<IconButton className='WIS-button-save' onClick={() => setActivePanel("what is happend-2")}>
-												<Icon20Check/>
-												<Title style={{marginLeft: '10px'}} className='WIS-title2-screen2'>Сохранить</Title>
-											</IconButton>
+											<div className='WIS-div-buttons'>
+												<Button className='WIS-button-save' onClick={() => setActivePanel("chronicle")}>
+													<Title className='WIS-title2-screen2'>Сохранить</Title>
+												</Button>
+												<Button className='WIS-button-save' onClick={() => setActivePanel("what is happend-2")}>
+													<Title className='WIS-title2-screen2'>Дополнить</Title>
+												</Button>
+											</div>
 										</div>
 									</Group>
 								</Panel>
 								<Panel id='what is happend-2'>
 									<div style={containerStyles}>
 									<PanelHeader separator={false} style={{width: '100vw'}} before={<PanelHeaderBack onClick={() => setActivePanel('what is happend-1')}/>}></PanelHeader>
-									<Icon36IncognitoOutline width={120} height={120} fill='black'/>
-									<Spacing size={20}></Spacing>
-									<Title className='WIS-title-screen2'>Плохо</Title>
-									<Spacing size={20}></Spacing>
-									<Subhead className='WIS-subtitle-screen2'>Расскажи что происходит</Subhead>
-									<Spacing size={30}></Spacing>
-									<div className='WIS-div-grid'>
-									<IconButton id='btn1' className='WIS-iconbutton'>
-												<Icon28BriefcaseOutline/>											
-										</IconButton>
-					
-										<IconButton id='btn2' className='WIS-iconbutton'>
-												<Icon28EducationOutline/>									
-										</IconButton>
+									<div className='WIS-polosa'></div>
+									<Group mode='plain' className='WIS-group'>
+										<div className='WIS-animal-2'></div>
+										<Title className='WIS-title-screen2'>Плохо</Title>
+										<Spacing size={10}></Spacing>
+										<Subhead className='WIS-subtitle-screen2'>Расскажи что происходит</Subhead>
+										<Spacing size={10}></Spacing>
+										<div className='WIS-div-grid'>
+											<div className='WIS-div-grid-components'>
+											<IconButton onFocus={CheckboxAdd}  id='btn1' className='WIS-iconbutton'>
+												<Checkbox className='WIS-iconbutton-checkbox' >
+													<Icon28BriefcaseOutline/>	
+												</Checkbox>										
+											</IconButton>
+											<Title className='WIS-div-grid-components-title'>Работа</Title>
+											</div>
+						
+											<div className='WIS-div-grid-components'>
+											<IconButton onFocus={CheckboxAdd}  id='btn2' className='WIS-iconbutton'>
+												<Checkbox className='WIS-iconbutton-checkbox' >
+													<Icon28EducationOutline/>
+												</Checkbox>									
+											</IconButton>
+											<Title className='WIS-div-grid-components-title'>Учеба</Title>
+											</div>
 
-										<IconButton id='btn3' className='WIS-iconbutton'>
-											<Icon28ArmchairOutline/>
-										</IconButton>
+											<div className='WIS-div-grid-components'>
+											<IconButton onFocus={CheckboxAdd} id='btn3' className='WIS-iconbutton'>
+												<Checkbox className='WIS-iconbutton-checkbox'>
+													<Icon28ArmchairOutline/>
+												</Checkbox>
+											</IconButton>
+											<Title className='WIS-div-grid-components-title'>Отдых.</Title>
+											</div>
 
-										<IconButton id='btn4' className='WIS-iconbutton'>
-											<Icon28LikeOutline/>
-										</IconButton>
+											<div className='WIS-div-grid-components'>
+											<IconButton onFocus={CheckboxAdd} id='btn4' className='WIS-iconbutton'>
+												<Checkbox  className='WIS-iconbutton-checkbox' >
+													<Icon28LikeOutline/>
+												</Checkbox>
+											</IconButton>
+											<Title className='WIS-div-grid-components-title'>Отношения</Title>
+											</div>
 
-										<IconButton id='btn5' className='WIS-iconbutton'>
-											<Icon28PlaneOutline/>
-										</IconButton>
+											<div className='WIS-div-grid-components'>
+											<IconButton onFocus={CheckboxAdd} id='btn5' className='WIS-iconbutton'>
+												<Checkbox  className='WIS-iconbutton-checkbox' >
+													<Icon28PlaneOutline/>
+												</Checkbox>
+											</IconButton>
+											<Title className='WIS-div-grid-components-title'>Полет</Title>
+											</div>
 
-										<IconButton id='btn6' className='WIS-iconbutton'>
-											<Icon28BookSpreadOutline/>
-										</IconButton>
+											<div className='WIS-div-grid-components'>
+											<IconButton onFocus={CheckboxAdd} id='btn6' className='WIS-iconbutton'>
+												<Checkbox  className='WIS-iconbutton-checkbox' >
+													<Icon28BookSpreadOutline/>
+												</Checkbox>
+											</IconButton>
+											<Title className='WIS-div-grid-components-title'>Чтение</Title>
+											</div>
 
-										<IconButton id='btn7' className='WIS-iconbutton'>
-											<Icon28MovieReelOutline/>
-										</IconButton>
+											<div className='WIS-div-grid-components'>
+											<IconButton onFocus={CheckboxAdd} id='btn7' className='WIS-iconbutton'>
+												<Checkbox  className='WIS-iconbutton-checkbox' >
+													<Icon28MovieReelOutline/>
+												</Checkbox>
+											</IconButton>
+											<Title className='WIS-div-grid-components-title'>Кино</Title>
+											</div>
 
-										<IconButton id='btn8' className='WIS-iconbutton'>
-											<Icon28MusicOutline/>
-										</IconButton>
+											<div className='WIS-div-grid-components'>
+											<IconButton onFocus={CheckboxAdd} id='btn8' className='WIS-iconbutton'>
+												<Checkbox  className='WIS-iconbutton-checkbox' >
+													<Icon28MusicOutline/>
+												</Checkbox>
+											</IconButton>
+											<Title className='WIS-div-grid-components-title'>Музыка</Title>
+											</div>
 
-										<IconButton id='btn9' className='WIS-iconbutton'>
-											<Icon28AppleOutline/>
-										</IconButton>
+											<div className='WIS-div-grid-components'>
+											<IconButton onFocus={CheckboxAdd} id='btn9' className='WIS-iconbutton'>
+												<Checkbox  className='WIS-iconbutton-checkbox' >
+													<Icon28AppleOutline/>
+												</Checkbox>
+											</IconButton>
+											<Title className='WIS-div-grid-components-title'>Еда</Title>
+											</div>
 
-										<IconButton id='btn10' className='WIS-iconbutton'>
-											<Icon28GameOutline/>
-										</IconButton>
+											<div className='WIS-div-grid-components'>
+											<IconButton onFocus={CheckboxAdd} id='btn10' className='WIS-iconbutton'>
+												<Checkbox  className='WIS-iconbutton-checkbox' >
+													<Icon28GameOutline/>
+												</Checkbox>
+											</IconButton>
+											<Title className='WIS-div-grid-components-title'>Игра</Title>
+											</div>
 
-										<IconButton id='btn11' className='WIS-iconbutton'>
-											<Icon28Users3Outline/>
-										</IconButton>
+											<div className='WIS-div-grid-components'>
+											<IconButton onFocus={CheckboxAdd} id='btn11' className='WIS-iconbutton'>
+												<Checkbox  className='WIS-iconbutton-checkbox' >
+													<Icon28Users3Outline/>
+												</Checkbox>
+											</IconButton>
+											<Title className='WIS-div-grid-components-title'>Друзья</Title>
+											</div>
 
-										<IconButton id='btn12' className='WIS-iconbutton'>
-											<Icon28PaletteOutline/>
-										</IconButton>
-									</div>
-									<FormItem htmlFor='writtingMood' top='📝 Дополнительная информация'>
-										<FormField className='WIS-input'>
-											<CustomInput input={input}/>
-										</FormField>
-									</FormItem>
-									<Spacing size={40}></Spacing>
-									<div className='WIS-buttons-container'>
-										<IconButton style={{margin: '10px'}} className='WIS-button-save' onClick={() => setActivePanel("what is happend-3")}>
-											<Icon20Check/>
-											<Title style={{marginLeft: '10px'}} className='WIS-title2-screen2'>Сохранить</Title>
-										</IconButton>
-										<IconButton style={{margin: '10px'}} className='WIS-button-change' onClick={() => setInput("")}>
-											<Icon24Add width={18} height={18}/>
-											<Title style={{marginLeft: '10px'}} className='WIS-title2-screen2'>Дополнить</Title>
-										</IconButton>
-									</div>
+											<div className='WIS-div-grid-components'>
+											<IconButton onFocus={CheckboxAdd} id='btn12' className='WIS-iconbutton'>
+												<Checkbox  className='WIS-iconbutton-checkbox' >
+													<Icon28PaletteOutline/>
+												</Checkbox>
+											</IconButton>
+											<Title className='WIS-div-grid-components-title'>Рисование</Title>
+											</div>
+										</div>
+										<FormItem htmlFor='writtingMood'>
+											<FormField className='WIS-input'>
+												<CustomInput input={input}/>
+											</FormField>
+										</FormItem>
+										<div className='WIS-buttons-container'>
+											<Button style={{margin: '10px'}} className='WIS-button-save-2' onClick={() => setActivePanel("what is happend-3")}>
+												<Title className='WIS-title2-screen2'>Сохранить</Title>
+											</Button>
+											<Button style={{margin: '10px'}} className='WIS-button-change-2' onClick={() => setInput("")}>
+												<Title className='WIS-title2-screen2'>Дополнить</Title>
+											</Button>
+										</div>
+										</Group>
 									</div>
 								</Panel>
 								<Panel id='what is happend-3'>
 									<div style={containerStyles}>
 										<PanelHeader separator={false} style={{width: '100vw'}} before={<PanelHeaderBack onClick={() => setActivePanel('what is happend-2')}/>}></PanelHeader>
-										<Icon36IncognitoOutline width={120} height={120} fill='black'/>
-										<Spacing size={20}></Spacing>
-										<Title className='WIS-title-screen2'>Плохо</Title>
-										<Spacing size={20}></Spacing>
-										<Subhead className='WIS-subtitle-screen2'>Расскажи что происходит</Subhead>
-										<Spacing size={30}></Spacing>
-										<div className='WIS-div-grid2'>
-											<div className='WIS-div-grid2-container'>
-												<div id='btn1-grid2' className='WIS-div-grid2-container-for-buttons'>
-												<Button className='WIS-div-grid2-button'>Усталость</Button>
-												<Button className='WIS-div-grid2-button'>Волнение</Button>
-												</div>
-												<div id='btn2-grid2' className='WIS-div-grid2-container-for-buttons'>
-												<Button className='WIS-div-grid2-button'>Уныние</Button>
-												<Button className='WIS-div-grid2-button'>Грусть</Button>
-												<Button className='WIS-div-grid2-button'>Досада</Button>
-												</div>
-												<div id='btn3-grid2' className='WIS-div-grid2-container-for-buttons'>
-												<Button className='WIS-div-grid2-button'>Огорчение</Button>
-												<Button className='WIS-div-grid2-button'>Упадок духа</Button>
-												</div>
-												<div id='btn4-grid2' className='WIS-div-grid2-container-for-buttons'>
-												<Button className='WIS-div-grid2-button'>Стресс</Button>
-												<Button className='WIS-div-grid2-button'>Злость</Button>
-												<Button className='WIS-div-grid2-button'>Страх</Button>
-												</div>
-												<div id='btn5-grid2' className='WIS-div-grid2-container-for-buttons'>
-												<Button className='WIS-div-grid2-button'>Нервозность</Button>
-												<Button className='WIS-div-grid2-button'>Отвращение</Button>
-												</div>
-												<div id='btn6-grid2' className='WIS-div-grid2-container-for-buttons'>
-												<Button className='WIS-div-grid2-button'>Стыд</Button>
-												<Button className='WIS-div-grid2-button'>Зависть</Button>
-												<Button className='WIS-div-grid2-button'>Гнев</Button>
-												</div>
-												<div id='btn7-grid2' className='WIS-div-grid2-container-for-buttons'>
-												<Button className='WIS-div-grid2-button'>Беспокойство</Button>
-												<Button className='WIS-div-grid2-button'>Ненависть</Button>
+										<div className='WIS-polosa'></div>
+										<Group mode='plain' className='WIS-group'>
+											<div className='WIS-animal-2'></div>
+											<Title className='WIS-title-screen2'>Плохо</Title>
+											<Spacing size={10}></Spacing>
+											<Subhead className='WIS-subtitle-screen2'>Расскажи что происходит</Subhead>
+											<Spacing size={10}></Spacing>
+											<div className='WIS-div-grid2'>
+												<div className='WIS-div-grid2-container'>
+													<div id='btn1-grid2' className='WIS-div-grid2-container-for-buttons'>
+													<IconButton onFocus={CheckboxAdd} className='WIS-div-grid2-button grid2-button'>
+													<Checkbox className='WIS-iconbutton-checkbox checkbox-grid2'><Title className='WIS-grid2-checkbox-title'>Усталость</Title></Checkbox></IconButton>
+													<IconButton onFocus={CheckboxAdd} className='WIS-div-grid2-button grid2-button'>
+													<Checkbox className='WIS-iconbutton-checkbox checkbox-grid2'><Title className='WIS-grid2-checkbox-title'>Волнение</Title></Checkbox></IconButton>
+													</div>
+													<div id='btn2-grid2' className='WIS-div-grid2-container-for-buttons'>
+													<IconButton onFocus={CheckboxAdd} className='WIS-div-grid2-button grid2-button'>
+													<Checkbox className='WIS-iconbutton-checkbox checkbox-grid2'><Title className='WIS-grid2-checkbox-title'>Уныние</Title></Checkbox></IconButton>
+													<IconButton onFocus={CheckboxAdd} className='WIS-div-grid2-button grid2-button'>
+													<Checkbox className='WIS-iconbutton-checkbox checkbox-grid2'><Title className='WIS-grid2-checkbox-title'>Грусть</Title></Checkbox></IconButton>
+													<IconButton onFocus={CheckboxAdd} className='WIS-div-grid2-button grid2-button'>
+													<Checkbox className='WIS-iconbutton-checkbox checkbox-grid2'><Title className='WIS-grid2-checkbox-title'>Досада</Title></Checkbox></IconButton>
+													</div>
+													<div id='btn3-grid2' className='WIS-div-grid2-container-for-buttons'>
+													<IconButton onFocus={CheckboxAdd} className='WIS-div-grid2-button grid2-button'>
+													<Checkbox className='WIS-iconbutton-checkbox checkbox-grid2'><Title className='WIS-grid2-checkbox-title'>Огорчение</Title></Checkbox></IconButton>
+													<IconButton onFocus={CheckboxAdd} className='WIS-div-grid2-button grid2-button'>
+													<Checkbox className='WIS-iconbutton-checkbox checkbox-grid2'><Title className='WIS-grid2-checkbox-title'>Упадок духа</Title></Checkbox></IconButton>
+													</div>
+													<div id='btn4-grid2' className='WIS-div-grid2-container-for-buttons'>
+													<IconButton onFocus={CheckboxAdd} className='WIS-div-grid2-button grid2-button'>
+													<Checkbox className='WIS-iconbutton-checkbox checkbox-grid2'><Title className='WIS-grid2-checkbox-title'>Стресс</Title></Checkbox></IconButton>
+													<IconButton onFocus={CheckboxAdd} className='WIS-div-grid2-button grid2-button'>
+													<Checkbox className='WIS-iconbutton-checkbox checkbox-grid2'><Title className='WIS-grid2-checkbox-title'>Злость</Title></Checkbox></IconButton>
+													<IconButton onFocus={CheckboxAdd} className='WIS-div-grid2-button grid2-button'>
+													<Checkbox className='WIS-iconbutton-checkbox checkbox-grid2'><Title className='WIS-grid2-checkbox-title'>Страх</Title></Checkbox></IconButton>
+													</div>
+													<div id='btn5-grid2' className='WIS-div-grid2-container-for-buttons'>
+													<IconButton onFocus={CheckboxAdd} className='WIS-div-grid2-button grid2-button'>
+													<Checkbox className='WIS-iconbutton-checkbox checkbox-grid2'><Title className='WIS-grid2-checkbox-title'>Нервозность</Title></Checkbox></IconButton>
+													<IconButton onFocus={CheckboxAdd} className='WIS-div-grid2-button grid2-button'>
+													<Checkbox className='WIS-iconbutton-checkbox checkbox-grid2'><Title className='WIS-grid2-checkbox-title'>Отвращение</Title></Checkbox></IconButton>
+													</div>
+													<div id='btn6-grid2' className='WIS-div-grid2-container-for-buttons'>
+													<IconButton onFocus={CheckboxAdd} className='WIS-div-grid2-button grid2-button'>
+													<Checkbox className='WIS-iconbutton-checkbox checkbox-grid2'><Title className='WIS-grid2-checkbox-title'>Стыд</Title></Checkbox></IconButton>
+													<IconButton onFocus={CheckboxAdd} className='WIS-div-grid2-button grid2-button'>
+													<Checkbox className='WIS-iconbutton-checkbox checkbox-grid2'><Title className='WIS-grid2-checkbox-title'>Зависть</Title></Checkbox></IconButton>
+													<IconButton onFocus={CheckboxAdd} className='WIS-div-grid2-button grid2-button'>
+													<Checkbox className='WIS-iconbutton-checkbox checkbox-grid2'><Title className='WIS-grid2-checkbox-title'>Гнев</Title></Checkbox></IconButton>
+													</div>
+													<div id='btn7-grid2' className='WIS-div-grid2-container-for-buttons'>
+													<IconButton onFocus={CheckboxAdd} className='WIS-div-grid2-button grid2-button'>
+													<Checkbox className='WIS-iconbutton-checkbox checkbox-grid2'><Title className='WIS-grid2-checkbox-title'>Беспокойство</Title></Checkbox></IconButton>
+													<IconButton onFocus={CheckboxAdd} className='WIS-div-grid2-button grid2-button'>
+													<Checkbox className='WIS-iconbutton-checkbox checkbox-grid2'><Title className='WIS-grid2-checkbox-title'>Ненависть</Title></Checkbox></IconButton>
+													</div>
 												</div>
 											</div>
-										</div>
-										<IconButton style={{marginTop: '40px'}} className='WIS-button-save' onClick={() => setActivePanel("chronicle")}>
-											<Icon20Check/>
-											<Title style={{marginLeft: '10px'}} className='WIS-title2-screen2'>Сохранить</Title>
-										</IconButton>
+											<IconButton style={{marginTop: '20px'}} className='WIS-button-save' onClick={() => setActivePanel("chronicle")}>
+												<Title className='WIS-title2-screen2'>Сохранить</Title>
+											</IconButton>
+										</Group>
 									</div>
 								</Panel>
 								<Panel id='settings'>
@@ -401,6 +480,8 @@ const App = () => {
 								<Panel id='facts and articles'>
 									<div style={containerStyles2}>
 										<PanelHeader separator={false} style={{width: '100vw'}} before={<PanelHeaderBack onClick={() => setActivePanel('chronicle')}/>}></PanelHeader>
+										<Spacing size={40}></Spacing>
+										<Title className='advice-title'>Советы</Title>
 											<Group style={containerStyles2}>
 												<Title className='advice-title'>Факты</Title>
 												<Spacing size={40}></Spacing>
@@ -408,6 +489,8 @@ const App = () => {
 												<Spacing size={40}></Spacing>
 												<Title className='advice-title'>Статьи</Title>
 												<Spacing size={40}></Spacing>
+												<Button className='advice-button' onClick={() => setActivePanel("articles")}></Button>
+												<Spacing size={20}></Spacing>
 												<Button className='advice-button' onClick={() => setActivePanel("articles")}></Button>
 												<Spacing size={20}></Spacing>
 												<Button className='advice-button' onClick={() => setActivePanel("articles")}></Button>
@@ -444,43 +527,49 @@ const App = () => {
 									<Placeholder>Тут ничего нет</Placeholder>
 								</Panel>
 								<Panel id='chronicle'>
-									<Group separator='hide'>
 										<div style={containerStyles}>
 											<PanelHeader separator={false} style={{width: '100vw'}} before={<PanelHeaderBack onClick={() => setActivePanel('what is happend-3')}/>}></PanelHeader>
-											<Spacing size={15}></Spacing>
-											<Title className='chronicle-title'>Хроника</Title>
-											<Spacing size={40}></Spacing>
-											<Group separator='hide'>
+											<div className='chronicle-polosa'></div>
+											<Spacing size={30}></Spacing>
+											<Title className='chronicle-title'>Твое настроение</Title>
+											<Spacing size={0}></Spacing>
+											<Group mode='plain'>
 													<div className='chronicle-bigdiv-container'>
-														<Group>
+														<Group separator='hide'>
 															<div className='chronicle-div-container'>
-																<div className='chronicle-div-date'>6 декабря</div>
+																<div className='chronicle-div-date'>6 дек</div>
 																<div className='chronicle-div-entry'>
 																	<div className='chronicle-div-emoji emoji-1'></div>
-																	<Title className='chronicle-div-title'>Хорошо</Title>
-																	<Subhead className='chronicle-div-subtitle'>Описание радостей и новых возможностей в жизни</Subhead>
+																	<div className='chronicle-div-zag'>
+																		<Title className='chronicle-div-title'>Хорошо</Title>
+																		<Subhead className='chronicle-div-subtitle'>Описание радостей и новых возможностей в жизни</Subhead>
+																	</div>
 																</div>
 															</div>
 														</Group>
 														
-														<Group>
+														<Group separator='hide'>
 															<div className='chronicle-div-container'>
-																<div className='chronicle-div-date'>1 декабря</div>
+																<div className='chronicle-div-date'>1 дек</div>
 																<div className='chronicle-div-entry'>
 																	<div className='chronicle-div-emoji emoji-2'></div>
-																	<Title className='chronicle-div-title'>Плохо</Title>
-																	<Subhead className='chronicle-div-subtitle'>Описание суровой действительности и тяжелой жизни</Subhead>
+																	<div className='chronicle-div-zag'>
+																		<Title className='chronicle-div-title'>Плохо</Title>
+																		<Subhead className='chronicle-div-subtitle'>Описание суровой и тяжелой жизни</Subhead>
+																	</div>																	
 																</div>
 															</div>
 														</Group>														
 														
-														<Group>
+														<Group separator='hide'>
 															<div className='chronicle-div-container'>
-																<div className='chronicle-div-date'>27 ноября</div>
+																<div className='chronicle-div-date'>27 ноя</div>
 																<div className='chronicle-div-entry'>
 																	<div className='chronicle-div-emoji emoji-3'></div>
-																	<Title className='chronicle-div-title'>Тяжело сказать</Title>
-																	<Subhead className='chronicle-div-subtitle'>Описание неясности всей произодшей ситуации</Subhead>
+																	<div className='chronicle-div-zag'>
+																		<Title className='chronicle-div-title'>Хорошо</Title>
+																		<Subhead className='chronicle-div-subtitle'>Описание радостей и новых возможностей в жизни</Subhead>
+																	</div>																	
 																</div>
 															</div>
 														</Group>
@@ -509,7 +598,6 @@ const App = () => {
 												</TabbarItem>
 											</Tabbar>
 										</div>
-									</Group>
 								</Panel>
 								<Panel id='statistics'>
 									<Group separator='hide'>

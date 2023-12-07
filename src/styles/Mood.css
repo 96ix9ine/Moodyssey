@@ -48,18 +48,8 @@
     background-repeat: no-repeat;
     background-size: cover;
 }
-/* .mood-panel {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    background-color: #FFFFFF;
-} */
-
 .mood-plus-button {
-    background-color: #59B959;
+    background-color: #91A75F;
     border-radius: 30px;
     padding: 10px;
 }
