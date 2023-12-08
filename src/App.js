@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import bridge from '@vkontakte/vk-bridge';
-import { View, Panel, PanelHeader, Header, SimpleCell, AdaptivityProvider, AppRoot, ConfigProvider, SplitLayout, SplitCol, Group, Button, Spacing, Title, IconButton, Subhead, Tabbar, TabbarItem, FormItem, FormField, PanelHeaderBack, Avatar, Cell, Switch, Placeholder, Checkbox, classNames, HorizontalScroll } from '@vkontakte/vkui';
+import { View, Panel, PanelHeader, Header, SimpleCell, AdaptivityProvider, AppRoot, ConfigProvider, SplitLayout, SplitCol, Group, Button, Spacing, Title, IconButton, Subhead, Tabbar, TabbarItem, FormItem, FormField, PanelHeaderBack, Avatar, Cell, Switch, Placeholder, Checkbox, Text, Link } from '@vkontakte/vkui';
 import '@vkontakte/vkui/dist/vkui.css';
 import '@vkontakte/icons';
 import './styles/Mood.css';
@@ -17,8 +17,6 @@ import {Icon28LightbulbStarOutline} from '@vkontakte/icons'
 import {Icon28GraphOutline} from '@vkontakte/icons'
 import {Icon28ListAddOutline} from '@vkontakte/icons'
 
-import {Icon36IncognitoOutline} from '@vkontakte/icons'
-
 import {Icon28BriefcaseOutline} from '@vkontakte/icons'
 import {Icon28EducationOutline} from '@vkontakte/icons'
 import {Icon28ArmchairOutline} from '@vkontakte/icons'
@@ -31,7 +29,6 @@ import {Icon28AppleOutline} from '@vkontakte/icons'
 import {Icon28GameOutline} from '@vkontakte/icons'
 import {Icon28Users3Outline} from '@vkontakte/icons'
 import {Icon28PaletteOutline} from '@vkontakte/icons'
-import {Icon20Check} from '@vkontakte/icons'
 
 import {Icon24DoorArrowLeftOutline} from '@vkontakte/icons'
 import {Icon24MessageArrowRightOutline} from '@vkontakte/icons'
@@ -89,16 +86,16 @@ const App = () => {
 
 	const containerStyles2 = {
 		width: '100vw', 
-		height: '98vh', 
+		height: '100vh', 
 		display: 'flex', 
 		alignItems: 'center', 
-		justifyContent: 'center', 
+		justifyContent: 'flex-start', 
 		flexDirection: 'column', 
-		backgroundColor: '#19191a'
+		backgroundColor: '#F7F4F2'
 	}
 
 	const CheckboxAdd = (event) => {
-        event.target.classList.add('checkbox-boxshadow')
+        event.target.classList.toggle('checkbox-boxshadow')
     }
 		
 
@@ -342,10 +339,10 @@ const App = () => {
 											</FormField>
 										</FormItem>
 										<div className='WIS-buttons-container'>
-											<Button style={{margin: '10px'}} className='WIS-button-save-2' onClick={() => setActivePanel("what is happend-3")}>
+											<Button style={{margin: '10px'}} className='WIS-button-save-2' onClick={() => setActivePanel("chronicle")}>
 												<Title className='WIS-title2-screen2'>Сохранить</Title>
 											</Button>
-											<Button style={{margin: '10px'}} className='WIS-button-change-2' onClick={() => setInput("")}>
+											<Button style={{margin: '10px'}} className='WIS-button-change-2' onClick={() => setActivePanel("what is happend-3")}>
 												<Title className='WIS-title2-screen2'>Дополнить</Title>
 											</Button>
 										</div>
@@ -421,13 +418,14 @@ const App = () => {
 									</div>
 								</Panel>
 								<Panel id='settings'>
-									<div style={containerStyles2}>
+									<div className='settings-div'>
 									<PanelHeader separator={false} style={{width: '100vw'}} before={<PanelHeaderBack onClick={() => setActivePanel('chronicle')}/>}></PanelHeader>
+									<div className='settings-polosa'></div>
 									<Spacing size={40}></Spacing>
 									<Title className='settings-title'>Настройки</Title>
 									<Spacing size={40}></Spacing>
-										<Group style={{width: '100vw', height: '100vh', backgroundColor: '#19191a'}}>
-											<Cell
+										<Group style={{width: '100vw', height: '100vh', backgroundColor: '#F6F3F1'}}>
+											<Cell className='settings-cell'
 												before={fetchedUser?.photo_200 ? <Avatar src={fetchedUser?.photo_200}/> : null}
 												subtitle={fetchedUser?.city && fetchedUser?.city.title ? fetchedUser?.city.title : ''}
 											>
@@ -435,18 +433,18 @@ const App = () => {
 											</Cell>
 											<Spacing size={20}></Spacing>
 											<Group mode='plain'>
-												<SimpleCell Component="label" after={<Switch defaultChecked/>}>
+												<SimpleCell Component="label" after={<Switch defaultChecked/>} style={{color: 'black'}}>
 													Уведомления
 												</SimpleCell>
 											</Group>
 											<Group mode='plain'>
-												<SimpleCell onClick={() => setActivePanel('policy')} after={<Icon24DoorArrowLeftOutline/>}>	
+												<SimpleCell onClick={() => setActivePanel('policy')} after={<Icon24DoorArrowLeftOutline/>} style={{color: 'black'}}>	
 													Политика конфиденциальности
 												</SimpleCell>
 											</Group>
 											<Group mode='plain'>
-												<SimpleCell onClick={() => setActivePanel('policy')} after={<Icon24MessageArrowRightOutline/>}>	
-													Поделиться приложением
+												<SimpleCell after={<Icon24MessageArrowRightOutline/>}>	
+													<Link href='https://vk.com/app51801024'>Поделиться приложением</Link>
 												</SimpleCell>
 											</Group>
 											<Tabbar>
@@ -480,21 +478,31 @@ const App = () => {
 								<Panel id='facts and articles'>
 									<div style={containerStyles2}>
 										<PanelHeader separator={false} style={{width: '100vw'}} before={<PanelHeaderBack onClick={() => setActivePanel('chronicle')}/>}></PanelHeader>
-										<Spacing size={40}></Spacing>
-										<Title className='advice-title'>Советы</Title>
-											<Group style={containerStyles2}>
-												<Title className='advice-title'>Факты</Title>
-												<Spacing size={40}></Spacing>
-												<Button className='advice-button' onClick={() => setActivePanel("facts")}></Button>
-												<Spacing size={40}></Spacing>
-												<Title className='advice-title'>Статьи</Title>
-												<Spacing size={40}></Spacing>
-												<Button className='advice-button' onClick={() => setActivePanel("articles")}></Button>
+										<Spacing size={0}></Spacing>
+										<div className='advice-polosa'>
+											<Title className='advice-title'>Советы</Title>	
+										</div>
+											<Group separator='hide' mode='plain' >
 												<Spacing size={20}></Spacing>
-												<Button className='advice-button' onClick={() => setActivePanel("articles")}></Button>
+												<Title className='advice-title-2'>Факты</Title>
+												<Spacing size={40}></Spacing>
+												<Button className='advice-button' onClick={() => setActivePanel("facts")}>
+													Чем умнее человек, тем чаще он не уверен в своих собственных убеждениях.
+												</Button>
+												<Spacing size={40}></Spacing>
+												<Title className='advice-title-2'>Статьи</Title>
+												<Spacing size={40}></Spacing>
+												<Button className='advice-button' onClick={() => setActivePanel("articles")}>
+													Если после общения с конкретным человеком вы испытываете негативные эмоции и чувствуете неприятный осадок – вы имели дело с токсичной персоной.
+												</Button>
 												<Spacing size={20}></Spacing>
-												<Button className='advice-button' onClick={() => setActivePanel("articles")}></Button>
-											<Tabbar>
+												<Button className='advice-button' onClick={() => setActivePanel("articles")}>
+													80% людей встречают своих будущих супругов в возрасте 16 лет.
+												</Button>
+												<Spacing size={20}></Spacing>
+												<Button className='advice-button-3' onClick={() => setActivePanel("articles")}>
+													Вы с больше вероятностью достигнете целей, если будете держать их при себе.</Button>											
+												<Tabbar>
 												<TabbarItem onClick={() => setActivePanel("chronicle")}>
 														<Icon28ListAddOutline/>
 												</TabbarItem>
@@ -514,7 +522,7 @@ const App = () => {
 												<TabbarItem onClick={() => setActivePanel("settings")}>
 														<Icon28SettingsOutline/>
 												</TabbarItem>
-											</Tabbar>
+												</Tabbar>
 											</Group>
 									</div>
 								</Panel>

@@ -1,9 +1,29 @@
+.settings-polosa {
+	display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 15vh;
+    background-color: #4F3422;
+}
+.settings-div {
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	flex-direction: column;
+	background-color: #F6F3F1;
+}
 .settings-title {
     display: flex;
 	justify-content: center;
 	align-items: center;
 	flex-wrap: wrap;
-	color: #F7F4F2;
+	color: black;
 	font-size: 24px;
 	font-weight: 700;
+}
+.settings-cell span {
+	color: black;
 }
