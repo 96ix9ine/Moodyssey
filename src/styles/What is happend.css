@@ -235,21 +235,26 @@
     background-color: #D3CCC7;
     transition: all 0.3s ease;
 }
-/* .WIS-iconbutton:focus {
-    box-shadow: 0px 0px 0px 2px orange;
-    transition: all 0.3s ease;
-} */
-.WIS-iconbutton-checkbox {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    
-}
 .WIS-iconbutton-checkbox svg {
     color: #583F2F;
 }
 .checkbox-boxshadow{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 15vw;
+    margin: 15px 15px 0px 15px;
+    color: #543A29;
+    background-color: #D3CCC7;
+    transition: all 0.3s ease;
+    box-shadow: 0px 0px 0px 2px orange;
+}
+.checkbox-boxshadow2 {
+    width: 100%;
+    height: 5vh;
+    margin: 10px 10px;
+    border-radius: 20px;
+    transition: all 0.3s ease;
     box-shadow: 0px 0px 0px 2px orange;
 }
 /* .WIS-iconbutton-checkbox input {
@@ -261,11 +266,19 @@
     opacity: 0;
     display: none !important;
 }
-.WIS-input {
+.WIS-input-block {
     width: 75vw;
     height: 150px;
     background-color: #91A75F;
     border-radius: 20px;
+}
+.WIS-input {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background-color: #91A75F;
 }
 .WIS-buttons-container {
     width: 75vw;

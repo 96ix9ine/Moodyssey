@@ -32,6 +32,28 @@
 	font-weight: 700;
     word-break: break-word;
 }
+.chronicle-div-text-emotions {
+    display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	color: #543A29;
+	font-size: 20px;
+	font-weight: 700;
+    line-height: 22px;
+    margin: 10px 0px 10px 0px;
+}
+.chronicle-div-text-actions {
+    display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	color: #543A29;
+	font-size: 20px;
+	font-weight: 700;
+    line-height: 22px;
+    margin: 10px 0px 10px 0px;
+}
 .chronicle-div-subtitle {
     display: flex;
 	justify-content: center;
@@ -40,6 +62,7 @@
 	color: #543A29;
 	font-size: 14px;
 	font-weight: 500;
+    word-break: break-all;
 }
 .chronicle-bigdiv-container {
     display: flex;
@@ -58,7 +81,7 @@
     align-items: center;
     justify-content: center;
     width: 75vw;
-    height: 15vh;
+    height: 30vh;
     margin: 20px;
     border: 2px solid #97918c;
     border-radius: 10px;

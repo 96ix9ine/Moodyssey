@@ -1,0 +1,23 @@
+.tabbarItem .vkuiTabbarItem__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.tabbarItem-text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 500;
+}
+.tabbarItem-text-span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 8vw;
+    background-color: rgb(175, 34, 34);
+    border-radius: 20px;
+    margin-left: 5px;
+    font-size: 10px;
+}
